@@ -94,17 +94,18 @@
 
         window.addEventListener("DOMContentLoaded", function(){
            let temaLE =  localStorage.getItem("temaLE")
-            if(temaLE === "dark"){
-                 document.body.classList.add("dark");
-                btntema.innerText = "tema claro";
-                
+            if(temaLE){
+               aplicatema(temaLE);
             }
-            else{
-                 document.body.classList.remove("dark");
-                btntema.innerText = "tema escuro";
+             if(corsalva){
+                document.documentElement.style.setProperty("--cor", corsalva);
+                indice = cores.indexOf(corsalva);
+                if(indice === -1) indice= 0 ;
             }
+           
         })
 
     </script>
 </body>
+
 </html>
