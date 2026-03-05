@@ -24,7 +24,8 @@
         .card{
             padding: 75px 50px ;
             border-radius: 12px;
-            border: 12px solid var(--cor)
+            border: 12px solid var(--cor);
+            transition: 0.4s ease;
         }
         button{
             cursor:pointer;
@@ -79,12 +80,12 @@
             let indice = 0;
         corbtn.addEventListener("click", function(){
             indice++;
-            if(indice >= cores.lenght){
+            if(indice >= cores.length){
                 indice = 0;
             }
-            document.documentElement.style.setProperty("--cor", cores[indice
+            document.documentElement.style.setProperty("--cor", cores[indice]); 
+            localStorage.setItem("cor", cores[indice]);
 
-            ])
 
         })
 
@@ -93,19 +94,20 @@
 
 
         window.addEventListener("DOMContentLoaded", function(){
-           let temaLE =  localStorage.getItem("temaLE")
+           let temaLE =  localStorage.getItem("temaLE");
+           let corsalva = localStorage.getItem("cor");
             if(temaLE){
-               aplicatema(temaLE);
+                aplicartema(temaLE);
+                
+                
             }
-             if(corsalva){
+            if(corsalva){
                 document.documentElement.style.setProperty("--cor", corsalva);
                 indice = cores.indexOf(corsalva);
                 if(indice === -1) indice= 0 ;
             }
-           
         })
 
-    </script>
+    </script>   
 </body>
-
 </html>
