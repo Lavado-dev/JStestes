@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: white;
+            color: black;
+            transition: 0.4s;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height:100vh;
+        }
+        .dark{
+            background-color: black;
+            color: white;
+        }
+        :root{
+            --cor:yellow;
+        }
+        .card{
+            padding: 75px 50px ;
+            border-radius: 12px;
+            border: 12px solid var(--cor)
+        }
+        button{
+            cursor:pointer;
+            background-color: var(--cor);
+            transition: background-color 0.4s ease, transform 0.4s ease;
+
+        }
+        button:hover{
+            transform: scale(1.05);
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>titulo</h1>
+        <p>paragrafo</p>
+        <button id="temabtn">tema escuro</button>
+        <button id="corbtn">alterar cor</button>
+    </div>
+    <script>
+        let btntema = document.getElementById("temabtn");
+        let corbtn = document.getElementById("corbtn");
+        
+        function aplicartema(tema){
+            if(tema === "dark"){
+                document.body.classList.add("dark");
+                btntema.innerText = "tema claro";
+            }
+            else{
+                document.body.classList.remove("dark");
+                btntema.innerText = "tema escuro";
+            }
+
+        }
+         btntema.addEventListener("click", function(){
+            let novotema;
+            
+            if(document.body.classList.contains("dark")){
+                novotema = "light";
+            }
+            else{
+                novotema =  "dark";
+                }
+                aplicartema(novotema);
+                localStorage.setItem("temaLE", novotema);
+        })
+        let cores = ["yellow", "blue", "red" ]
+            let indice = 0;
+        corbtn.addEventListener("click", function(){
+            indice++;
+            if(indice >= cores.lenght){
+                indice = 0;
+            }
+            document.documentElement.style.setProperty("--cor", cores[indice
+
+            ])
+
+        })
+
+
+
+
+
+        window.addEventListener("DOMContentLoaded", function(){
+           let temaLE =  localStorage.getItem("temaLE")
+            if(temaLE === "dark"){
+                 document.body.classList.add("dark");
+                btntema.innerText = "tema claro";
+                
+            }
+            else{
+                 document.body.classList.remove("dark");
+                btntema.innerText = "tema escuro";
+            }
+        })
+
+    </script>
+</body>
+</html>

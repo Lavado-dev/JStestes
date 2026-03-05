@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="val1" type="number">
+    <input id="val2" type="number">
+    <button id="soma">Somar</button>
+    <button id="subtra">Subtrair</button>
+    <button id="multi">Multiplicar</button>
+    <button id="divis">Dividir</button>
+    <p id="resultado"></p>
+    <script>
+        let botao = document.getElementById("soma");
+        botao.addEventListener("click", s);
+        let botao2 = document.getElementById("subtra");
+        botao2.addEventListener("click", sub);
+        let botao4 = document.getElementById("multi");
+        botao4.addEventListener("click", mul);
+         let botao3 = document.getElementById("divis");
+        botao3.addEventListener("click", divi);
+        function pegarvalores(){
+            let v1 = Number(document.getElementById("val1").value);
+            let v2 = Number(document.getElementById("val2").value);
+            return[v1,v2];
+        }
+        function s(){
+            let valores = pegarvalores();
+            let re = document.getElementById("resultado");
+            let r = valores[0] + valores [1];
+            re.innerText = r;
+        }
+        function sub(){
+            let valores = pegarvalores();
+            let re = document.getElementById("resultado");
+            let r = valores[0] - valores [1];
+            re.innerText = r;
+        }
+        function mul(){
+            let valores = pegarvalores();
+            let re = document.getElementById("resultado");
+            let r = valores[0] * valores [1];
+            re.innerText = r;
+        }
+        function divi(){
+            let valores = pegarvalores();
+            let re = document.getElementById("resultado");
+            if(valores[1] === 0 ){
+                re.innerText = "Não é possível dividir por zero!";
+                return;
+            }
+            let r = valores[0] / valores[1];
+            re.innerText = r;
+        }
+        
+
+        
+
+    </script>
+</body>
+</html>

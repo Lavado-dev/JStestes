@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            transition:0.4s ease;
+            display: flex;
+            justify-content: center;/*justifica o conteúdo horizontalmente*/
+            align-items: center;/*justifica o conteúdo verticalmente, mas só funciona com height 100vh*/
+            height: 100vh;/*faz com que body se aplique ao site inteiro*/
+            
+        }
+        .dark {
+            background-color: black;
+            color: white;
+        }
+        .card{
+            background-color: grey;
+            color: black ;
+            padding: 75px 100px;
+            border-radius:12px;
+            transition:0.4s;
+
+            
+        }
+        .dark .card{
+            background-color: midnightblue;
+            transition: 0.4s;
+            color:white;
+        }
+        button{
+            padding:30px 45px;/*valor 1= horizontal, valor 2 = vertical*/
+            border:none;/*tira a borda do botão*/
+            border-radius:12px; /*isso aqui arredonda o botão*/
+            cursor:pointer;/*faz o cursor virar a maozinha*/
+            transition: transform 0.3s ease, background-color 0.3s ease;/*faz uma animação de transição*/
+        }
+        button:hover{
+           transform: scale(1.05);/*da aquele efeito de crescer com o mouse em cima*/
+        }
+        .dark button{
+            background-color: white;
+            color: black;
+        }
+        body button{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <h1>card</h1>
+        <p>olá</p>
+        <button id="botao">ativar modo escuro</button>
+    </div>
+    <script>
+     let button = document.getElementById("botao");
+     button.addEventListener("click", tema);
+     function tema(){document.body.classList.toggle("dark");
+        if(document.body.classList.contains("dark")){
+            button.innerText = "ativar modo claro";
+           localStorage.setItem("modo", "dark");        
+            
+                }
+        else{
+            button.innerText = "ativar modo escuro";
+            localStorage.setItem("modo", "light");  
+        }
+     }
+     window.addEventListener("DOMContentLoaded", function(){
+        let modo = localStorage.getItem("modo");
+        if(modo === "dark"){
+            document.body.classList.add("dark");
+             button.innerText ="ativar modo claro";
+        }
+        else{
+            document.body.classList.remove("dark");
+            button.innerText = "ativar modo escuro";
+        }
+        
+     })
+     
+        </script>
+</body>
+</html>

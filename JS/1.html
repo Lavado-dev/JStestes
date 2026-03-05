@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="oi">oi</h1>
+    <button id="botao">mudar texto</button>
+    <script>
+        let alterado = false
+            let botao = document.getElementById("botao");
+            botao.addEventListener("click", oii);
+        function oii(){
+            let oi = document.getElementById("oi");
+            if(!alterado){
+                oi.innerText = "Agora foi alterado com JS!";
+                oi.style.color = "blue";
+                botao.innerText = "mudar o texto denovo";
+                alterado = true ;
+            }
+            else {
+                oi.innerText = "oi";
+                oi.style.color = "black";
+                alterado = false;
+                botao.innerText = "mudar o texto";
+            }
+            
+           
+        }
+
+
+    </script>
+</body>
+</html>
